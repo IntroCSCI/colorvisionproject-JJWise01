@@ -1,8 +1,8 @@
-# !!!Replace with your unique project name!!!
+#Web Accessibility of The Eyes
 
 ## Description
 
-!!!Replace with a description of what your program does!!!
+Ask a user for a color, then present five contrasting colors based on the input in order to be readable/discernible for those with color blindness-related issues.
 
 ### v0.2 Updates
 
@@ -15,7 +15,7 @@
 
 ## Developer
 
-!!!Replace with your name!!!
+Julian Wise
 
 ## Example
 
@@ -29,26 +29,37 @@ g++ --std=c++11 *.cpp -o cvp
 Here is an example of the program running:
 
 ```
-!!!Replace with an example of the program running with user interaction!!!
+Program asks user for color value and file name in which input will be stored,
+User enters color value and file name,
+User-provided color value is saved to named file,
+Program provides five color values contrasting from stored color value by comparing hexadecimal values and accepting only those that meet set parameters regarding accessibility standards for color blindness.
+
 ```
 
 ## C++ Guide
 
 ### Variables and Data Types
 
-!!!Replace with a summary and examples of how multiple variables have been used with a variety of data types and why they have been used effectively and appropriately!!!
+Interger variable starting with 0x that will store value of color user enters,
+String variable to store inputed file destination name,
+Array in which to store ranges regarding hexadecimal values within the color spectrum,
+Array to store five output color values in order to write them to the file name provided by user,
 
 ### Console Input and Output
 
-!!!Replace with a summary and examples of how input and output have been used effectively and appropriately!!!
+"Enter color value"
+User enters color value
+"Enter file name to save color value"
+User enters file name
+Console outputs five color values
 
 ### Decisions
 
-!!!Replace with a summary and examples of how multiple decision constructs have been used effectively and appropriately!!!
+Read in a hexadecimal value and convert it into RGB format. Use another calculation to convert RGB values to relative luminance. Use ((L1 + 0.05) / (L2 + 0.05)) to generate five additional color values that meet accessibility standards regarding contrast.
 
 ### Iteration
 
-!!!Replace with a summary and examples of how iteration has been used effectively and appropriately!!!
+For five iterations of a loop, output color value in array
 
 ### File Input and Output
 
