@@ -5,8 +5,8 @@ using namespace std;
 struct HexToRGB
 {
   int red;
-  int blue;
-  int green;        
+  int green;
+  int blue;        
 };
 
 
@@ -22,7 +22,6 @@ string decToHexa(int n)
   
         temp = n % 16;
   
-        // check if temp < 10
         if (temp < 10) {
             hexaDeciNum[i] = temp + 48;
             i++;
@@ -49,7 +48,7 @@ string decToHexa(int n)
   
     return hexCode;
 }
-  
+
 string convertRGBtoHex(int R, int G, int B)
 {
     if ((R >= 0 && R <= 255)
@@ -75,6 +74,12 @@ string fileName;
 HexToRGB converter;
 converter.red = 5;
 
+unsigned long fF = 0xFFFFFF;
+
+int ExRed = fF >> 16;
+int ExGreen = (fF & 0x00ff00) >> 8;
+int ExBlue = (fF & 0x0000ff);
+
 HexToRGB output[5];
 
 cout << "Give me a color";
@@ -82,5 +87,12 @@ cin >> inColor;
 cout << "What would you like to name your file?";
 cin >> fileName;
 
+cout << ExRed;
+cout << ExGreen;
+cout << ExBlue;
+
   return 0;
 }
+
+// (red*65536)+(green*256)+blue
+// cout << hex << n << endl;
