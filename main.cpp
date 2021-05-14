@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <cmath>
 using namespace std;
 
 struct HexToRGB
@@ -74,11 +75,38 @@ string fileName;
 HexToRGB converter;
 converter.red = 5;
 
-unsigned long fF = 0xFFFFFF;
+unsigned long hexValueIN = 0xFFFFFF;
 
-int ExRed = fF >> 16;
-int ExGreen = (fF & 0x00ff00) >> 8;
-int ExBlue = (fF & 0x0000ff);
+float gammaRGB[3];
+
+gammaRGB[0] = hexValueIN >> 16;
+gammaRGB[1] = (hexValueIN & 0x00ff00) >> 8;
+gammaRGB[2] = (hexValueIN & 0x0000ff);
+
+
+
+for (int i=0; i < 3; i++)
+  {
+    gammaRGB[i] = (gammaRGB[i]/255);
+    cout << gammaRGB[i] << "\n"; 
+    if (gammaRGB[i] < 0.03928)
+    {
+      gammaRGB[i] = (gammaRGB[i]/12.92);
+    }
+    else
+    {
+      gammaRGB[i] = pow(((gammaRGB[i] + 0.055)/1.055),2.4);
+    }
+  }
+
+
+
+
+
+
+// float redLinear = rgbRed/255;
+// float greenLinear = rgbGreen/255;
+// float blueLinear = rgbBlue/255;
 
 HexToRGB output[5];
 
@@ -87,12 +115,10 @@ cin >> inColor;
 cout << "What would you like to name your file?";
 cin >> fileName;
 
-cout << ExRed;
-cout << ExGreen;
-cout << ExBlue;
 
   return 0;
 }
 
 // (red*65536)+(green*256)+blue
 // cout << hex << n << endl;
+// at least 4.5 grade of AA (Best is 7)
